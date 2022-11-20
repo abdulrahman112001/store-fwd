@@ -1,0 +1,103 @@
+<div class="container main-box">
+  <div class="mt-5">
+    <div class="row">
+        <div class="col-md-7 d-flex mt-2">
+          <div class="row">
+            <div class="col-md-12 d-flex" *ngFor="let item of cart">
+              <button (click)="removeProduct(item.item.id)" class="border-0 btn" >X</button>
+              <div>
+                <img class="mt-2" [src]="item.item.url" alt="" width="100">
+              </div>
+              <div class="mt-3 ms-5">
+                <h2>{{item.item.name}}</h2>
+                <p>{{item.item.price|currency}}</p>
+                <div class="d-flex mb-3">
+                  <p>Amount:  </p>
+                  <input (change)="totalChanged(+Quant.value,item.item.id)" #Quant type="number" class="form-control ms-3 w-25"
+                  [value]="item.Quantity">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-5">
+          <form #userForm="ngForm" (ngSubmit)="submit()">
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">full name </label>
+              <input
+                type="text"
+                ngModel
+                required
+                minlength="3"
+                name="name"
+                #name="ngModel"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+              />
+              <div *ngIf="name.invalid && name.touched">
+                <div *ngIf="name.errors?.['required']">
+                  Name is required
+                </div>
+                <div *ngIf="name.errors?.['minlength']">
+                  name must be above 3 character
+                </div>
+
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label">Address </label>
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                ngModel
+                required
+                minlength="6"
+                name="Address"
+                #Address="ngModel"
+              />
+              <div *ngIf="Address.invalid && Address.touched">
+                <div *ngIf="Address.errors?.['required']">
+                  Address is required
+                </div>
+                <div *ngIf="Address.errors?.['minlength']">
+                  Address must be above 3 character
+                </div>
+
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label"
+                >credit cart number
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                name="credit"
+                ngModel
+                required
+               maxlength="16"
+                #credit="ngModel"
+              />
+              <div *ngIf="credit.invalid && credit.touched">
+                <div *ngIf="credit.errors?.['required']">
+                  credit is required
+                </div>
+                <div *ngIf="credit.errors?.['maxlength']">
+                  credit must be above 3 character
+                </div>
+
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary"  [disabled]="userForm.invalid">Submit</button>
+          </form>
+        </div>
+        <h1 class="mt-4">Total : {{totalAmount|currency}}</h1>
+    </div>
+  </div>
+</div>
