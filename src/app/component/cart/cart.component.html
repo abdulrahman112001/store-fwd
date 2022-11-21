@@ -4,7 +4,6 @@
         <div class="col-md-7 d-flex mt-2">
           <div class="row">
             <div class="col-md-12 d-flex" *ngFor="let item of cart">
-              <button (click)="removeProduct(item.item.id)" class="border-0 btn" >X</button>
               <div>
                 <img class="mt-2" [src]="item.item.url" alt="" width="100">
               </div>
@@ -14,8 +13,10 @@
                 <div class="d-flex mb-3">
                   <p>Amount:  </p>
                   <input (change)="totalChanged(+Quant.value,item.item.id)" #Quant type="number" class="form-control ms-3 w-25"
-                  [value]="item.Quantity">
+                  [value]="item.Quantity" value="1" min="1" minlength="0">
+
                 </div>
+                <button (click)="removeProduct(item.item.id)" class="btn bg-danger text-white border-0 btn" >delete</button>
               </div>
             </div>
           </div>

@@ -16,9 +16,12 @@ export class ProductItemComponent implements OnInit {
   @Output() item:EventEmitter<product_edit> = new EventEmitter()
   theAlert:string = ""
 
-  qunt:number = 0
+  qunt:number = 1
 
   ngOnInit(): void {
+  }
+  counter(i:number){
+    return new Array(i);
   }
   add(){
 

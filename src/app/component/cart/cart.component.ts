@@ -38,7 +38,7 @@ totalChanged(amount:number,id:number){
         this.cart[i].Quantity = amount
 
         localStorage.setItem("cart",JSON.stringify(this.cart))
-        // alert("Total Amount Has Been Changed")
+        alert("Total Amount  Changed")
         this.getTotal()
     }
   }
@@ -48,11 +48,10 @@ submit(){
       localStorage.setItem("User",JSON.stringify(data))
       this.router.navigate(["/confirmation"])
 }
-//this function is used to remove items from cart and count back the total amout again
 removeProduct(id:number){
   for (let i = 0; i < this.cart.length; i++) {
     if (this.cart[i].item.id == id) {
-      // alert("Item "+this.cart[i].item.name +" Has Been Removed")
+      alert("Item "+this.cart[i].item.name +" is  Removed")
       let index = this.cart.findIndex(x=>x.item.id == id)
       this.cart.splice(index,1)
       localStorage.setItem("cart",JSON.stringify(this.cart))

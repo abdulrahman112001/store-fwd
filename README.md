@@ -1,28 +1,38 @@
-# Y
+# My Store Project
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.3.
+## Table of Contents
 
-## Development server
+- [Description] (#Description)
+- [Installation][#installation]
+- [Features] (#Features)
+- [Thanks] (#Thanks)
+- [Developed_By] (#DevelopedBy)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Description
 
-## Code scaffolding
+This is my first project with udacity (Cross-Skilling track - Future Work is Digital). It's a store website we are accessing the products from json file then adding products to cart and fill the personal data to buy this products from the cart
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
 
-## Build
+1. you will clone the project from the the githb repo
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+2. after opening it you will open the terminal to and write (npm install) to download all the dependancies and packages
 
-## Running unit tests
+3. stand on the app directory and write (ng serve -- open) to launch the project
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Features
 
-## Running end-to-end tests
+1.Responsive Design.
+2.easy way to Add products to cart .
+3.easy remove products from cart and update the records .
+4.strong validation on the inputs and prevent the user from complete the proccess if the form is not valid .
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## Thanks
 
-## Further help
+thank you udacity ,Eygpt FWD
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
-# store-fwd
+## Devloped_by
+
+Eng . ِAbdulrahman Elqassbi
+
+[def]: #Instal

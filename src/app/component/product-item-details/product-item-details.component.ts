@@ -13,7 +13,7 @@ export class ProductItemDetailsComponent implements OnInit {
   Products : Product[]=[]
   product_edit:product_edit[]=[]
   theAlert:string=''
-  quat:number = 0
+  quat:number = 1
 
   constructor( private rote:ActivatedRoute, private ProductService:ProductService) { }
 

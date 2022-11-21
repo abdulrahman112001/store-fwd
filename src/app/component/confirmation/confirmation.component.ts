@@ -19,7 +19,7 @@ export class ConfirmationComponent implements OnInit {
   }
   clearstorage(){
     localStorage.clear()
-    // alert("Cart has been cleared")
+    alert("Cart has been cleared")
     this.router.navigate(["/product-list"])
   }
 
