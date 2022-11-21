@@ -73,26 +73,13 @@
               <label for="exampleInputEmail1" class="form-label"
                 >credit cart number
               </label>
-              <input
-                type="text"
-                class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
-                name="credit"
-                ngModel
-                required
-               maxlength="16"
-                #credit="ngModel"
-              />
-              <div *ngIf="credit.invalid && credit.touched">
-                <div *ngIf="credit.errors?.['required']">
-                  credit is required
-                </div>
-                <div *ngIf="credit.errors?.['maxlength']">
-                  credit must be above 3 character
-                </div>
+              <input #credit="ngModel" [(ngModel)]="theCredit" name="pCredit" type="number" minlength="16"  class="form-control" pattern="^[0-9]{16}$"  placeholder="(16-degit number)">
 
-              </div>
+              <div class="mt-3 mb-3" [hidden]="credit.valid||credit.untouched">
+                <small class="alert alert-danger"
+                >Credit Number Must Be 16 number</small>
+
+            </div>
             </div>
 
             <button type="submit" class="btn btn-primary"  [disabled]="userForm.invalid">Submit</button>
