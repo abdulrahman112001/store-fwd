@@ -1,3 +1,4 @@
+import { CartService } from './../../services/cart.service';
 import { product_edit } from './../../interfaces/product-edit';
 import { ProductService } from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
@@ -10,7 +11,7 @@ import { Product } from 'src/app/interfaces/product-interfaces';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor( private ProductService:ProductService) { }
+  constructor( private ProductService:ProductService, private CartService:CartService) { }
   Products : Product[]=[]
   product_edit:product_edit[]=[]
   searchText:string="";
@@ -27,22 +28,11 @@ export class ProductListComponent implements OnInit {
     this.getProduct()
   }
   AddCrt(edit:product_edit){
-    if (localStorage.getItem("cart")) {
-      this. product_edit = JSON.parse(localStorage.getItem("cart")!)
-      let store = this. product_edit.find(item=>item.item.id == edit.item.id)
-      if (store) {
-        alert("Item "+ edit.item.name +" product is already in cart !")
-        console.log(edit)
-      }else{
-        this. product_edit.push(edit)
-        localStorage.setItem("cart",JSON.stringify(this. product_edit))
-        alert(" Item "+edit.item.name+" Added")
-      }
-    }else{
-      this. product_edit.push(edit)
-      localStorage.setItem("cart",JSON.stringify(this. product_edit))
-      alert("Item "+edit.item.name+" Added")
-    }
+    this.CartService.AddProduct(edit)
+    alert("aaa")
+    console.log(edit)
+    this. product_edit.push(edit)
+    console.log(this.product_edit)
   }
   }
 

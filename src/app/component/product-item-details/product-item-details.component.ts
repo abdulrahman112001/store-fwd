@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { product_edit } from 'src/app/interfaces/product-edit';
 import { Product } from 'src/app/interfaces/product-interfaces';
+import { CartService } from './../../services/cart.service';
 
 @Component({
   selector: 'app-product-item-details',
@@ -15,7 +16,7 @@ export class ProductItemDetailsComponent implements OnInit {
   theAlert:string=''
   quat:number = 1
 
-  constructor( private rote:ActivatedRoute, private ProductService:ProductService) { }
+  constructor( private rote:ActivatedRoute, private ProductService:ProductService ,  private CartService:CartService) { }
 
   ngOnInit(): void {
     let Products_ = this.rote.snapshot.params['id'];
@@ -24,6 +25,7 @@ export class ProductItemDetailsComponent implements OnInit {
         this.Products = data
         this.Products = this.Products.filter(el =>el.id == Products_)
 
+        this.add()
       }
     })
     console.log(Products_)
@@ -33,21 +35,19 @@ export class ProductItemDetailsComponent implements OnInit {
     this.theAlert = "You have Selected " + q+ " From " + this.Products[0].name + " Item"
    }
    add(){
-    if (localStorage.getItem("cart")) {
-      this.product_edit = JSON.parse(localStorage.getItem("cart")!)
-      let store = this.product_edit.find(item=>item.item.id == this.Products[0].id)
-      if (store) {
-        alert("Item "+this.Products[0].name+" added before")
-      }else{
-        this.product_edit.push({item:this.Products[0],Quantity:this.quat})
-        localStorage.setItem("cart",JSON.stringify(this. product_edit))
-        alert("Item "+this.Products[0].name+" Added To Cart")
-      }
-    }else{
-       this.product_edit.push({item:this.Products[0],Quantity:this.quat})
-       localStorage.setItem("cart",JSON.stringify(this. product_edit))
-       alert("Item "+this.Products[0].name+" Added To Cart")
-    }
+    //  this.product_edit = JSON.parse(localStorage.getItem("cart")!)
+    //  let store = this.product_edit.find(item=>item.item.id == this.Products[0].id)
+     this.product_edit.push({item:this.Products[0],Quantity:this.quat})
+    //  console.log(store)
+     console.log(this.product_edit)
+
+  }
+  AddCrt(edit:product_edit){
+    this.CartService.AddProduct(edit)
+    alert("aaa")
+    console.log(edit)
+    this. product_edit.push(edit)
+    console.log(this.product_edit)
   }
 
 

@@ -13,4 +13,6 @@ url:string='../../assets/data.json'
   getAllData():Observable<any>{
     return this.http.get(this.url)
   }
+
+  
 }
